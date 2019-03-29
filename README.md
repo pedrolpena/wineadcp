@@ -4,6 +4,13 @@ A script to help install and configure RD Instruments WinADCP on linux and Mac
 This script will copy the necessary files to the appropriate locations and it<br>
 will use winetricks to install the windows dependencies.
 
+
+Sceeenshots
+===========
+![WinADCP](winadcp_lxde.png?raw=true "WinADCP running on lubuntu 18.04")
+
+
+
 Requirements
 ============
 

@@ -47,7 +47,7 @@ WINEPREFIX=~/.adcp winecfg
 ```
 * Click on Add application and navigate and select C:\Program Files\RD Instruments\WinADCP\WinADCP.exe<br>
 * Under the Windows version drop down list select "XP"<br>
-* Click on the libraries tab and enter "comctl32" in the New override for library field and click on Add.<br>
+* Click on the libraries tab and enter "comctl32" in the "New override for library" field and click on Add.<br>
 * Click on the Edit button and select "Built in then Native" and click on OK to close winecfg<br>
 
 You should now be able to launch WinADCP from the launcher.

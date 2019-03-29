@@ -1,0 +1,54 @@
+#!/bin/bash
+PREFIX=$HOME/'.wine'
+
+if [ ! "$1" == "" ]; then
+    PREFIX="$1"
+fi
+
+INSTALL_DIR=$PREFIX'/drive_c/Program Files/RD Instruments/WinADCP'
+ICON_DIR=$HOME/'.local/share/icons/hicolor/32x32/apps'
+DESKTOP_DIR=$HOME/'.local/share/applications'
+
+WINE_EXEC='Exec=env WINEPREFIX="'"$PREFIX"'\" wine '"$INSTALL_DIR"'/WinADCP.exe'
+WINE_PATH='Path='"$INSTALL_DIR"
+
+echo $INSTALL_DIR
+
+if [ ! -d "$INSTALL_DIR" ]; then
+   mkdir -p "$INSTALL_DIR"
+fi
+
+if [ ! -d "$ICON_DIR" ]; then
+   mkdir -p "$ICON_DIR"
+fi
+
+cp -v WADPOps.Txt "$INSTALL_DIR"
+cp -v WinADCP.chm "$INSTALL_DIR"
+cp -v WinADCP.exe "$INSTALL_DIR"
+cp -v winadcp.png "$INSTALL_DIR"
+cp -v install "$INSTALL_DIR"
+cp -v WinADCP.desktop "$INSTALL_DIR"
+
+cp -v winadcp.png "$ICON_DIR"
+
+cp -v WinADCP.desktop "$DESKTOP_DIR"
+echo $WINE_EXEC | sed 's/ /\\ /g' | sed 's/wine\\/wine/g'| sed 's/env\\/env/g'| sed 's/\"\\/\"/g'| sed 's/\\\"/\"/g'>> "$DESKTOP_DIR"/WinADCP.desktop
+echo $WINE_PATH >> "$DESKTOP_DIR"/WinADCP.desktop
+
+WINETRICKS_INSTALLED=`which winetricks`
+
+if [ ! "$WINETRICKS_INSTALLED" == "" ]; then
+    echo "Attempting to install dependencies using winetricks"
+    WINEPREFIX=$PREFIX winetricks vb6run comctl32 comctl32ocx comdlg32ocx
+    
+else
+    echo ""
+    echo "winetricks is not installed. In order to easily install"
+    echo "the dependencies, install winetricks and run"
+    echo "\"winetricks vb6run comctl32 comctl32ocx comdlg32ocx\""
+    echo "or install each one manually."
+fi
+echo ""
+echo "Use winecfg to override \"comctl32\" to (builtin,native)"
+echo "and set WinADCP.exe to be run as XP"
+echo "to start type \"WINEPREFIX=$PREFIX winecfg\""

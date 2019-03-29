@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=WinADCP
+Categories=AOML
+Type=Application
+StartupNotify=true
+Icon=winadcp.png
+Name[en_US]=WinADCP.desktop

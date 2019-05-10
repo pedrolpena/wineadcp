@@ -41,6 +41,15 @@ If no prefix is supplied then everything is installed in the default prefix $HOM
 chmod +x install
 ./install ~/.adcp
 ```
+Type the following if you want to install the dependencies manually.<br>
+```
+winetricks vb6run comctl32 comctl32ocx comdlg32ocx
+```
+If you do it manually, you'll have to launch WinADCP.exe manually from it's location.
+```
+wine WinADCP.exe
+```
+
 Run The wine configuration program
 ```bash
 WINEPREFIX=~/.adcp winecfg

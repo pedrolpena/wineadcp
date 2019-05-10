@@ -27,7 +27,7 @@ WinADCP.exe
 
 In order for this to work the listed files must be replaced with actual files created by RD Instruments.<br>
 I created this script because I didn't have the WinADCP installer but I had an existing installation.<br>
-you can copy these files from an existing installation on windows, overwrite these, and it will work.<br>
+you can copy these files from an existing installation on windows, overwrite theshttps://github.com/pedrolpena/wineadcpe, and it will work.<br>
 
 Make sure to use a 32 bit prefix. if your existing prefix is 64 bit then create a new one.<br>
 eg.
@@ -45,10 +45,7 @@ Type the following if you want to install the dependencies manually.<br>
 ```
 winetricks vb6run comctl32 comctl32ocx comdlg32ocx
 ```
-If you do it manually, you'll have to launch WinADCP.exe manually from it's location.
-```
-wine WinADCP.exe
-```
+
 
 Run The wine configuration program
 ```bash
@@ -60,3 +57,8 @@ WINEPREFIX=~/.adcp winecfg
 * Click on the Edit button and select "Built in then Native" and click on OK to close winecfg<br>
 
 You should now be able to launch WinADCP from the launcher.
+
+If install it manually, you'll have to launch WinADCP.exe manually from it's location, or create your own desktop launcher.
+```
+wine WinADCP.exe
+```
